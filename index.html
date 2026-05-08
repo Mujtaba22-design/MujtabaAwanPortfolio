@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mujtaba Awan | AI Web Developer & Shopify Growth Expert</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;600;800&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <style>
+        :root {
+            --ink: #050505;
+            --bone: #f5f5f0;
+            --accent: #ffffff;
+        }
+
+        body {
+            background-color: var(--ink);
+            color: var(--bone);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        #preloader {
+            position: fixed;
+            inset: 0;
+            background: var(--ink);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .reveal-line {
+            width: 0%;
+            height: 1px;
+            background: #fff;
+            position: absolute;
+        }
+
+        .reveal-mask {
+            position: relative;
+            overflow: hidden;
+        }
+        .reveal-mask::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: #111;
+            transform: translateY(0);
+            transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1);
+            z-index: 2;
+        }
+        .reveal-mask.active::after {
+            transform: translateY(101%);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .metric-title {
+            font-size: clamp(3rem, 10vw, 12rem);
+            line-height: 0.85;
+            letter-spacing: -0.06em;
+            font-weight: 800;
+        }
+
+        .magnetic-wrap {
+            display: inline-block;
+            transition: transform 0.3s ease-out;
+        }
+
+        .grain::after {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url("https://upload.wikimedia.org/wikipedia/commons/7/76/1k_Noise_Texture.png");
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 99;
+        }
+
+        .horizontal-track {
+            display: flex;
+            gap: 10vw;
+            padding: 0 10vw;
+            align-items: center;
+            height: 100vh;
+        }
+
+        #progress-bar {
+            position: fixed;
+            top: 0; left: 0; width: 0%; height: 3px;
+            background: #fff; z-index: 60;
+        }
+        
+        .exp-card {
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            padding: 3rem 0;
+            transition: all 0.4s ease;
+        }
+        .exp-card:hover {
+            background: rgba(255,255,255,0.02);
+            padding-left: 1rem;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-link {
+            transition: transform 0.3s ease;
+        }
+        .project-link:hover {
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body class="antialiased grain">
+
+    <div id="progress-bar"></div>
+
+    <div id="preloader">
+        <div class="reveal-line" id="loader-line"></div>
+    </div>
+
+    <nav class="fixed top-0 w-full z-50 p-6 md:p-8 flex justify-between items-center mix-blend-difference">
+        <div class="flex items-center gap-4">
+            <div class="w-8 h-[1px] bg-white"></div>
+            <span class="font-extrabold tracking-tighter text-xl text-white uppercase">M.AWAN</span>
+        </div>
+        <div class="hidden md:flex gap-12 text-[10px] uppercase tracking-[0.4em] font-bold opacity-60">
+            <a href="#about" class="hover:opacity-100 transition-opacity text-white">Identity</a>
+            <a href="#expertise" class="hover:opacity-100 transition-opacity text-white">Expertise</a>
+            <a href="#projects" class="hover:opacity-100 transition-opacity text-white">AI Deployments</a>
+            <a href="#experience" class="hover:opacity-100 transition-opacity text-white">Career</a>
+            <a href="#impact" class="hover:opacity-100 transition-opacity text-white">Impact</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="min-h-screen relative flex items-center justify-center px-6 overflow-hidden pt-10">
+        <div class="absolute inset-0 z-0">
+            <div id="hero-bg-grid" class="w-full h-full opacity-5 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px]"></div>
+        </div>
+
+        <div class="container mx-auto z-10">
+            <div class="max-w-5xl mx-auto text-center">
+                <div class="inline-flex items-center gap-3 px-4 py-2 border border-white/10 rounded-full mb-6 opacity-0 hero-entry bg-white/5">
+                    <span class="relative flex h-2 w-2">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                    </span>
+                    <span class="text-[9px] tracking-[0.3em] uppercase font-bold text-white/60">AI WEB DEVELOPER & SHOPIFY GROWTH EXPERT</span>
+                </div>
+                
+                <h1 class="text-[9vw] md:text-[4.5rem] lg:text-[5.5rem] font-extrabold tracking-tighter mb-6 leading-[1] hero-entry opacity-0 uppercase">
+                    I BUILD HIGH CONVERTING <span class="italic font-light text-white/20">SHOPIFY STORES</span> 
+                    USING <span class="text-white">AI SEO & META ADS.</span>
+                </h1>
+
+                <p class="text-white/40 max-w-2xl mx-auto text-xs md:text-sm mb-10 hero-entry opacity-0 leading-relaxed uppercase tracking-[0.2em] px-4">
+                    AI-powered development, store optimization, product SEO, and Meta Ads. Scaling faster, selling smarter.
+                </p>
+                
+                <div class="hero-entry opacity-0">
+                   <a href="#contact" class="px-8 py-4 border border-white/10 rounded-full text-[10px] uppercase tracking-widest font-bold hover:bg-white hover:text-black transition-all duration-500">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-40 bg-[#0a0a0a] relative overflow-hidden">
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-20 items-start">
+                <div class="fade-up-trigger">
+                    <p class="text-sm uppercase tracking-[0.5em] text-white/30 mb-12">The Growth Architect</p>
+                    <div class="space-y-8 text-xl md:text-2xl font-light leading-relaxed text-white/80">
+                        <p>
+                            I’m <span class="text-white font-semibold">Mujtaba Awan</span> — currently serving as <span class="text-white underline decoration-white/20 underline-offset-8">Ecommerce Manager at Greenvalley</span>.
+                        </p>
+                        <p>
+                            I focus on ranking product and collection pages, increasing organic traffic, and improving conversions through advanced Shopify SEO and technical optimization.
+                        </p>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 gap-12">
+                    <div class="glass-card p-12 rounded-3xl fade-up-trigger">
+                        <h4 class="text-xs uppercase tracking-[0.3em] text-white/40 mb-8">What I Do</h4>
+                        <ul class="space-y-4 text-sm tracking-wide text-white/70">
+                            <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-white rounded-full"></span> AI Powered Shopify Development</li>
+                            <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-white rounded-full"></span> Shopify SEO (Product, Collection, Tech)</li>
+                            <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-white rounded-full"></span> Meta Ads Strategy & Scaling</li>
+                            <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-white rounded-full"></span> Ecommerce Conversion Optimization</li>
+                            <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-white rounded-full"></span> Local SEO for Retail Businesses</li>
+                            <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-white rounded-full"></span> Order Management & Ecommerce Ops</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Gallery -->
+    <section id="projects" class="py-40 bg-[#050505]">
+        <div class="container mx-auto px-6">
+            <h2 class="text-sm uppercase tracking-[0.5em] text-white/30 mb-12">AI Solutions Deployment</h2>
+            <div class="project-grid">
+                <a href="https://mujtaba22-design.github.io/Mucch-Wala-hair-salon/" target="_blank" class="project-link glass-card p-8 rounded-2xl group">
+                    <div class="flex justify-between items-start mb-4">
+                        <i data-lucide="scissors" class="text-white/40 group-hover:text-white transition-colors"></i>
+                        <i data-lucide="arrow-up-right" class="text-white/20"></i>
+                    </div>
+                    <h3 class="text-xl font-bold uppercase tracking-tighter">Mucch Wala Salon</h3>
+                    <p class="text-xs text-white/40 mt-2">AI Optimized UI & Service Branding</p>
+                </a>
+                <a href="https://mujtaba22-design.github.io/BR-9-Cafe/#" target="_blank" class="project-link glass-card p-8 rounded-2xl group">
+                    <div class="flex justify-between items-start mb-4">
+                        <i data-lucide="coffee" class="text-white/40 group-hover:text-white transition-colors"></i>
+                        <i data-lucide="arrow-up-right" class="text-white/20"></i>
+                    </div>
+                    <h3 class="text-xl font-bold uppercase tracking-tighter">BR9 Cafe</h3>
+                    <p class="text-xs text-white/40 mt-2">Digital Menu & Customer Journey</p>
+                </a>
+                <a href="https://mujtaba22-design.github.io/OraDent/#services" target="_blank" class="project-link glass-card p-8 rounded-2xl group">
+                    <div class="flex justify-between items-start mb-4">
+                        <i data-lucide="activity" class="text-white/40 group-hover:text-white transition-colors"></i>
+                        <i data-lucide="arrow-up-right" class="text-white/20"></i>
+                    </div>
+                    <h3 class="text-xl font-bold uppercase tracking-tighter">OraDent Dental</h3>
+                    <p class="text-xs text-white/40 mt-2">Appointment Lead Gen System</p>
+                </a>
+                <a href="https://mujtaba22-design.github.io/FROSTY-TERRACE/" target="_blank" class="project-link glass-card p-8 rounded-2xl group">
+                    <div class="flex justify-between items-start mb-4">
+                        <i data-lucide="utensils" class="text-white/40 group-hover:text-white transition-colors"></i>
+                        <i data-lucide="arrow-up-right" class="text-white/20"></i>
+                    </div>
+                    <h3 class="text-xl font-bold uppercase tracking-tighter">Frosty Terrace</h3>
+                    <p class="text-xs text-white/40 mt-2">Visual-First Hospitality Web</p>
+                </a>
+                <a href="https://mujtaba22-design.github.io/FlorencaSalon/#contact" target="_blank" class="project-link glass-card p-8 rounded-2xl group">
+                    <div class="flex justify-between items-start mb-4">
+                        <i data-lucide="sparkles" class="text-white/40 group-hover:text-white transition-colors"></i>
+                        <i data-lucide="arrow-up-right" class="text-white/20"></i>
+                    </div>
+                    <h3 class="text-xl font-bold uppercase tracking-tighter">Florenca Salon</h3>
+                    <p class="text-xs text-white/40 mt-2">Conversion Focused Landing Page</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Professional Experience -->
+    <section id="experience" class="py-40 bg-[#050505]">
+        <div class="container mx-auto px-6">
+            <h2 class="text-sm uppercase tracking-[0.5em] text-white/30 mb-20">Career Trajectory</h2>
+            
+            <div class="max-w-5xl">
+                <div class="exp-card fade-up-trigger">
+                    <div class="flex flex-col md:flex-row justify-between items-start gap-6">
+                        <div>
+                            <h3 class="text-3xl font-bold uppercase tracking-tighter">Ecommerce Manager</h3>
+                            <p class="text-white/40 mt-1 uppercase text-xs tracking-widest">Greenvalley • Full-time • Feb 2023 - Present</p>
+                        </div>
+                        <span class="px-4 py-1 border border-white/20 rounded-full text-[10px] uppercase">Islāmābād • On-site</span>
+                    </div>
+                    <p class="mt-8 text-white/60 leading-relaxed max-w-3xl">
+                        Handling Shopify SEO, local SEO, product optimization, and daily ecommerce operations. Focused on building long-term organic growth systems and scaling revenue impact.
+                    </p>
+                </div>
+
+                <div class="exp-card fade-up-trigger">
+                    <div class="flex flex-col md:flex-row justify-between items-start gap-6">
+                        <div>
+                            <h3 class="text-3xl font-bold uppercase tracking-tighter">Social Media & Growth Lead</h3>
+                            <p class="text-white/40 mt-1 uppercase text-xs tracking-widest">Chaman Biryani • Freelance • Feb 2023 - Nov 2025</p>
+                        </div>
+                        <span class="px-4 py-1 border border-white/20 rounded-full text-[10px] uppercase">Rawat • Remote</span>
+                    </div>
+                    <p class="mt-8 text-white/60 leading-relaxed max-w-3xl">
+                        Transformed an offline one-dish restaurant into a structured online brand. Built the WhatsApp Business ecommerce system and managed end-to-end digital growth via Facebook & Instagram content strategies.
+                    </p>
+                </div>
+
+                <div class="exp-card fade-up-trigger">
+                    <div class="flex flex-col md:flex-row justify-between items-start gap-6">
+                        <div>
+                            <h3 class="text-3xl font-bold uppercase tracking-tighter">Content & SEO Executive</h3>
+                            <p class="text-white/40 mt-1 uppercase text-xs tracking-widest">Peachcode • Internship • Oct 2021 - Sep 2023</p>
+                        </div>
+                        <span class="px-4 py-1 border border-white/20 rounded-full text-[10px] uppercase">Faisalabad • Remote</span>
+                    </div>
+                    <p class="mt-8 text-white/60 leading-relaxed max-w-3xl">
+                        Managed SEO-focused content strategy generating 100K+ monthly impressions. Identified CTR gaps and optimized headline/meta structures for showbiz niche WordPress sites.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Track -->
+    <section id="impact" class="bg-[#050505] overflow-hidden">
+        <div class="horizontal-track" id="impact-track">
+            <!-- SEO Metric -->
+            <div class="flex-shrink-0 w-[95vw] md:w-[85vw] flex flex-col md:flex-row items-center gap-12">
+                <div class="flex-1">
+                    <p class="text-[10px] uppercase tracking-[0.5em] text-white/30 mb-8">SEO Performance</p>
+                    <h2 class="metric-title text-white">4.1M</h2>
+                    <h3 class="text-2xl md:text-4xl font-light italic text-white/40 mt-4 tracking-tighter">Search Impressions</h3>
+                    <div class="mt-8 text-white/50 leading-relaxed border-l border-white/10 pl-8 text-sm uppercase tracking-widest">
+                        61K+ Organic Clicks <br>
+                        3-Month Performance High
+                    </div>
+                </div>
+                <div class="flex-1 w-full reveal-mask rounded-2xl overflow-hidden border border-white/20">
+                    <img loading="lazy" src="https://i.postimg.cc/85Wb7NJQ/Seo-Stats.jpg" alt="SEO Proof" class="w-full grayscale hover:grayscale-0 transition-all duration-700">
+                </div>
+            </div>
+
+            <!-- Shopify Revenue Metric (PKR) -->
+            <div class="flex-shrink-0 w-[95vw] md:w-[85vw] flex flex-col md:flex-row items-center gap-12">
+                <div class="flex-1">
+                    <p class="text-[10px] uppercase tracking-[0.5em] text-white/30 mb-8">Sales Velocity</p>
+                    <h2 class="metric-title text-white">36M+</h2>
+                    <h3 class="text-2xl md:text-4xl font-light italic text-white/40 mt-4 tracking-tighter">PKR Total Sales Generated</h3>
+                    <div class="mt-8 text-white/50 leading-relaxed border-l border-white/10 pl-8 text-sm uppercase tracking-widest">
+                        7.8K+ Total Orders <br>
+                        Shopify Verified Dashboard
+                    </div>
+                </div>
+                <div class="flex-1 w-full reveal-mask rounded-2xl overflow-hidden border border-white/20">
+                    <img loading="lazy" src="https://i.postimg.cc/sXSJMsQR/Shopify-Stats.jpg" alt="Shopify Revenue Stats" class="w-full grayscale hover:grayscale-0 transition-all duration-700">
+                </div>
+            </div>
+
+            <!-- Revenue Overview -->
+            <div class="flex-shrink-0 w-[90vw] md:w-[70vw]">
+                <p class="text-[10px] uppercase tracking-[0.5em] text-white/30 mb-8">Overall Growth</p>
+                <h2 class="metric-title text-white">7M+</h2>
+                <h3 class="text-2xl md:text-4xl font-light italic text-white/40 mt-4 tracking-tighter">Direct Marketing ROI</h3>
+                <div class="grid grid-cols-2 gap-12 mt-12 border-t border-white/10 pt-12">
+                    <div>
+                        <p class="text-3xl font-bold">328K+</p>
+                        <p class="text-[10px] uppercase tracking-widest mt-2 opacity-40">Sessions Managed</p>
+                    </div>
+                    <div>
+                        <p class="text-3xl font-bold">Ranked</p>
+                        <p class="text-[10px] uppercase tracking-widest mt-2 opacity-40">Collection Pages</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Credentials -->
+    <section class="py-40 bg-white text-black px-6">
+        <div class="container mx-auto">
+            <h2 class="text-4xl md:text-8xl font-extrabold tracking-tighter mb-24 uppercase">Verified.</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                <div class="reveal-mask rounded-xl border border-black/5 shadow-sm overflow-hidden">
+                    <img loading="lazy" src="https://i.postimg.cc/Ss8Gnk2S/peach-code-exerince-letter.jpg" alt="Peachcode Experience" class="w-full h-auto">
+                </div>
+                <div class="reveal-mask rounded-xl border border-black/5 shadow-sm overflow-hidden">
+                    <img loading="lazy" src="https://i.postimg.cc/Qt5qFh9s/Digital-marketing-certificate.jpg" alt="Marketing Cert" class="w-full h-auto">
+                </div>
+                <div class="reveal-mask rounded-xl border border-black/5 shadow-sm overflow-hidden">
+                    <img loading="lazy" src="https://i.postimg.cc/63Rh8t2K/Great-learning-academy-certificate.jpg" alt="Great Learning Academy" class="w-full h-auto">
+                </div>
+                <div class="reveal-mask rounded-xl border border-black/5 shadow-sm overflow-hidden">
+                    <img loading="lazy" src="https://i.postimg.cc/sXSJMsQR/Shopify-Stats.jpg" alt="Shopify Stats" class="w-full h-auto">
+                </div>
+                <div class="reveal-mask rounded-xl border border-black/5 shadow-sm overflow-hidden">
+                    <img loading="lazy" src="https://i.postimg.cc/85Wb7NJQ/Seo-Stats.jpg" alt="Search Proof" class="w-full h-auto">
+                </div>
+                <div class="reveal-mask rounded-xl border border-black/5 shadow-sm overflow-hidden">
+                    <img loading="lazy" src="https://i.postimg.cc/mD1tRyXS/Chat-GPT-Image-May-8-2026-02-27-54-AM.png" alt="AI Specialist" class="w-full h-auto">
+                </div>
+                <div class="reveal-mask rounded-xl border border-black/5 shadow-sm overflow-hidden">
+                    <img loading="lazy" src="https://i.postimg.cc/C1xs4XKT/Chat-GPT-Image-May-8-2026-02-30-48-AM.png" alt="Ecommerce Systems" class="w-full h-auto">
+                </div>
+                <div class="reveal-mask rounded-xl border border-black/5 shadow-sm overflow-hidden">
+                    <img loading="lazy" src="https://i.postimg.cc/2jJ74HN3/Chat-GPT-Image-May-8-2026-02-33-12-AM.png" alt="Growth Strategy" class="w-full h-auto">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="py-40 bg-[#050505] text-white px-6">
+        <div class="container mx-auto text-center">
+            <h2 class="text-6xl md:text-[8rem] font-extrabold tracking-tighter mb-20 leading-tight fade-up-trigger">
+                LET'S <span class="text-white/20 italic">GROW.</span>
+            </h2>
+            
+            <div class="magnetic-wrap">
+                <a href="https://www.linkedin.com/in/mujtabaawan/" target="_blank" class="group relative inline-flex px-12 py-8 md:px-20 md:py-10 border border-white/10 rounded-full hover:bg-white hover:text-black transition-all duration-500">
+                    <span class="relative z-10 text-xl font-bold uppercase tracking-widest flex items-center gap-4">
+                        Connect on LinkedIn <i data-lucide="arrow-up-right"></i>
+                    </span>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+        gsap.registerPlugin(ScrollTrigger);
+
+        window.onload = () => {
+            gsap.to('#loader-line', {
+                width: "100%",
+                duration: 0.8,
+                onComplete: () => {
+                    gsap.to('#preloader', { yPercent: -100, duration: 0.8, ease: "power4.inOut" });
+                    init();
+                }
+            });
+        };
+
+        function init() {
+            gsap.to("#progress-bar", { width: "100%", ease: "none", scrollTrigger: { scrub: 0.3 } });
+            gsap.to('.hero-entry', { opacity: 1, y: 0, duration: 1, stagger: 0.1, ease: "expo.out" });
+
+            const track = document.getElementById('impact-track');
+            gsap.to(track, {
+                x: () => -(track.scrollWidth - window.innerWidth),
+                ease: "none",
+                scrollTrigger: {
+                    trigger: "#impact",
+                    start: "center center",
+                    end: () => "+=" + track.scrollWidth,
+                    scrub: 1,
+                    pin: true
+                }
+            });
+
+            gsap.utils.toArray('.fade-up-trigger').forEach(el => {
+                gsap.from(el, {
+                    scrollTrigger: { trigger: el, start: "top 90%" },
+                    opacity: 0, y: 40, duration: 1, ease: "power3.out"
+                });
+            });
+
+            gsap.utils.toArray('.reveal-mask').forEach(mask => {
+                ScrollTrigger.create({
+                    trigger: mask,
+                    start: "top 85%",
+                    onEnter: () => mask.classList.add('active')
+                });
+            });
+        }
+    </script>
+</body>
+</html>
